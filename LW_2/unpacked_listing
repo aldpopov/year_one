@@ -311,4 +311,144 @@ listing                                                      100% 8450   770.9KB
 aldpopov@Ubuntu:~/year_one/LW_2$ ls
 arch  listing  test_2  unpacked_listing
 Last login: Thu Sep 28 00:42:46 2023 from 46.138.40.109
+aldpopov@Ubuntu:~/year_one/LW_2$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
 
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	./
+
+nothing added to commit but untracked files present (use "git add" to track)
+aldpopov@Ubuntu:~/year_one/LW_2$ cd ..
+aldpopov@Ubuntu:~/year_one$ git branch task_2
+aldpopov@Ubuntu:~/year_one$ git status
+On branch main
+Your branch is up-to-date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	LW_2/
+
+nothing added to commit but untracked files present (use "git add" to track)
+aldpopov@Ubuntu:~/year_one$ git touch task_2
+git: 'touch' is not a git command. See 'git --help'.
+aldpopov@Ubuntu:~/year_one$ git checkoout task_2
+git: 'checkoout' is not a git command. See 'git --help'.
+
+The most similar command is
+	checkout
+aldpopov@Ubuntu:~/year_one$ git checkout task_2
+Switched to branch 'task_2'
+aldpopov@Ubuntu:~/year_one$ git add LW_2
+aldpopov@Ubuntu:~/year_one$ git status
+On branch task_2
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   LW_2/arch
+	new file:   LW_2/listing
+	new file:   LW_2/test_2
+	new file:   LW_2/unpacked_listing
+
+aldpopov@Ubuntu:~/year_one$ cd LW_2
+aldpopov@Ubuntu:~/year_one/LW_2$ touch Report_2.md
+aldpopov@Ubuntu:~/year_one/LW_2$ ls
+arch  listing  Report_2.md  test_2  unpacked_listing
+aldpopov@Ubuntu:~/year_one/LW_2$ git checkout main
+A	LW_2/arch
+A	LW_2/listing
+A	LW_2/test_2
+A	LW_2/unpacked_listing
+Switched to branch 'main'
+Your branch is up-to-date with 'origin/main'.
+aldpopov@Ubuntu:~/year_one/LW_2$ git checkout task_2
+A	LW_2/arch
+A	LW_2/listing
+A	LW_2/test_2
+A	LW_2/unpacked_listing
+Switched to branch 'task_2'
+aldpopov@Ubuntu:~/year_one/LW_2$ git push origin task_2
+Username for 'https://github.com': aldpopov
+Password for 'https://aldpopov@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com//aldpopov/year_one.git/'
+aldpopov@Ubuntu:~/year_one/LW_2$ git push origin task_2
+Username for 'https://github.com': aldpopov
+Password for 'https://aldpopov@github.com': 
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'task_2' on GitHub by visiting:
+remote:      https://github.com/aldpopov/year_one/pull/new/task_2
+remote: 
+To https://github.com//aldpopov/year_one.git
+ * [new branch]      task_2 -> task_2
+aldpopov@Ubuntu:~/year_one/LW_2$ git commit
+[task_2 c1399ec] LW_2 is now available!
+ Committer: aldpopov <aldpopov@Ubuntu.myguest.virtualbox.org>
+Your name and e-mail address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 4 files changed, 616 insertions(+)
+ create mode 100644 LW_2/arch
+ create mode 100644 LW_2/listing
+ create mode 100644 LW_2/test_2
+ create mode 100644 LW_2/unpacked_listing
+aldpopov@Ubuntu:~/year_one/LW_2$ git push origin task_2
+Username for 'https://github.com': aldpopov
+Password for 'https://aldpopov@github.com': 
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 3.37 KiB | 690.00 KiB/s, done.
+Total 7 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com//aldpopov/year_one.git
+   5cd19dd..c1399ec  task_2 -> task_2
+aldpopov@Ubuntu:~/year_one/LW_2$ git add Report_2.md
+aldpopov@Ubuntu:~/year_one/LW_2$ git status
+On branch task_2
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   Report_2.md
+
+aldpopov@Ubuntu:~/year_one/LW_2$ git commit
+[task_2 cf610a7] Blank Report_2
+ Committer: aldpopov <aldpopov@Ubuntu.myguest.virtualbox.org>
+Your name and e-mail address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 LW_2/Report_2.md
+aldpopov@Ubuntu:~/year_one/LW_2$ git push origin task_2
+Username for 'https://github.com': aldpopov
+Password for 'https://aldpopov@github.com': 
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 394 bytes | 131.00 KiB/s, done.
+Total 4 (delta 1), reused 1 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com//aldpopov/year_one.git
+   c1399ec..cf610a7  task_2 -> task_2
+aldpopov@Ubuntu:~/year_one/LW_2$ 
