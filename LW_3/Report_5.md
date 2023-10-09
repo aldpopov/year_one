@@ -15,9 +15,9 @@
 
 | Входные данные | Выходные данные                        | Описание тестируемого случая                    |
 |----------------|----------------------------------------|-------------------------------------------------|
-| 156            | 001101110                              | Тест №1                                         |
-| 1725           | 001111010101                           | Тест №2                                         |
-| 12345670       | 001010011100101110111000               | Тест №3                                         |
+| 156            | 1101110                                | Тест №1                                         |
+| 1725           | 1111010101                             | Тест №2                                         |
+| 12345670       | 1010011100101110111000                 | Тест №3                                         |
 6. **Протокол**:
 ```
 00, ,<,find
@@ -38,7 +38,7 @@ go,4, ,step_right_four
 go,5, ,step_right_five
 go,6, ,step_right_six
 go,7, ,step_right_seven
-go, ,>,go_end
+go, ,>,place_flag
 
 step_right_zero, ,>,go_zero
 go_zero,0,>,go_zero
@@ -289,9 +289,66 @@ next,5,>,go
 next,6,>,go
 next,7,>,go
 
-go_end,0,>,go_end
-go_end,1,>,go_end
-go_end, , ,go_end
+place_flag,0,>,place_flag
+place_flag,1,>,place_flag
+place_flag, ,3,position
+
+position,3,<,position
+position,0,<,position
+position,1,<,position
+position, ,>,clean
+
+clean, ,>,clean
+clean,0,>,check
+clean,1, ,copy_first_one
+clean,3,3,copy_last_zero_step
+
+check,1,<,delete_zero
+check,0,<,delete_zero
+check,3,<,delete_zero
+
+delete_zero,0, ,clean
+
+copy_first_one, ,<,copy_first_one
+copy_first_one,0,>,space_one
+copy_first_one,1,>,space_one
+copy_first_one,2,>,space_one
+copy_first_one,3,>,space_one
+copy_first_one,4,>,space_one
+copy_first_one,5,>,space_one
+copy_first_one,6,>,space_one
+copy_first_one,7,>,space_one
+space_one, ,>,paste_one
+paste_one, ,1,jump_one
+jump_one,1,>,copy_next
+
+copy_next, ,>,copy_next
+copy_next,0, ,copy_zero
+copy_next,1, ,copy_one
+copy_next,3, ,go_end
+
+copy_zero, ,<,copy_zero
+copy_zero,0,>,paste_zero
+copy_zero,1,>,paste_zero
+paste_zero, ,0,jump_zero
+jump_zero,0,>,copy_next
+
+copy_one, ,<,copy_one
+copy_one,0,>,paste_one
+copy_one,1,>,paste_one
+
+copy_last_zero_step,3,<,copy_last_zero
+copy_last_zero, ,<,copy_last_zero
+copy_last_zero,0,>,space_zero
+space_zero, ,>,paste_zero
+
+go_end, ,<,go_end
+go_end,0,0,end
+go_end,1,1,end
+
+end,0,>,end
+end,1,>,end
+end, , ,end
 ```
 7. **Замечания автора** по существу работы: Отсутствуют.
 8. **Выводы**: Освоено базовое программировние с применением машины Тьюринга, которое поможет в разработке планов решения более трудных задач в дальнейшем.
