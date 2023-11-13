@@ -82,11 +82,11 @@ int main(void)
     {
         if ((pow(i + 10, 2) + pow(j + 10, 2) <= 100) && (pow(i + 20, 2) + pow(j + 20, 2) <= 100))
         {
-            printf("Есть попадание!\n");
-            printf("Координата x: %d\n", i);
-            printf("Координата y: %d\n", j);
-            printf("Параметр движения: %d\n", l);
-            printf("Время: %d\n", k);
+            printf("Success!\n");
+            printf("X coordinate: %d\n", i);
+            printf("Y coordinate: %d\n", j);
+            printf("Movement parameter: %d\n", l);
+            printf("Time: %d\n", k);
             success = true;
             break;
         }
@@ -100,11 +100,11 @@ int main(void)
     }
     if (success == false)
     {
-        printf("Нет попадания!\n");
-        printf("Координата x: %d\n", i);
-        printf("Координата y: %d\n", j);
-        printf("Параметр движения: %d\n", l);
-        printf("Время: %d\n", k);
+        printf("Failure!\n");
+        printf("X coordinate: %d\n", i);
+        printf("Y coordinate: %d\n", j);
+        printf("Movement parameter: %d\n", l);
+        printf("Time: %d\n", k);
     }
 }
 ```
