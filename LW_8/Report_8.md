@@ -23,7 +23,7 @@ int main(){
   printf("Hello, Charles!\n");
   return 0;
 }
-D:\C_projects>gcc lab8.c
+D:\C_projects>gcc -std=c99 -Wall -pedantic lab8.c
 
 D:\C_projects>ls
 a.exe  lab8.c
