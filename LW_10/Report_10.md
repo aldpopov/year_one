@@ -15,6 +15,7 @@
 6. **Протокол**:
 ```
 \documentclass[11pt, letterpaper]{article}
+\usepackage[top=4cm,bottom=1cm,left=4.2cm,right=4.2cm,marginparwidth=1.75cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{amsmath}
@@ -31,7 +32,7 @@
 \captionsetup[figure]{labelsep=space}
 \setcounter{page}{198}
 \pagestyle{empty}
-\begin{wrapfigure}{l}{0.35\textwidth}
+\begin{wrapfigure}{l}{0.4\textwidth}
 \includegraphics[width=0.9\linewidth]{graphics.png} 
 \caption{}
 \label{fig:pic_1}
