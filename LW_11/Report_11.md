@@ -17,7 +17,7 @@
 |---------------------------------------------------------|----------------------------------------|
 | &-1ffffffffffffffff  0f5,,f35 afefsdcvx                 | 0                                      |
 |     fffffffffefefafea                                   | 1                                      |
-| +FFhdfsj 0FEAAFEEFAB21370,,,  9ffffFABEABCDEF65 &-164   | 1                                      |
+| +FFhdfsj 0FEAAFEEFAB21370,,,  9ffffFABEABCDEF6  &-164   | 1                                      |
 
 6. **Протокол**:
 ```
