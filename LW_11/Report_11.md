@@ -40,7 +40,7 @@ int main() {
     int result = 0;
     int len_count = 0;
     state s = START_STATE;
-    while(ch = getchar()) {
+    while((ch = getchar())) {
         switch(s) {
             case START_STATE: {
                 if(is_sep(ch)) {
