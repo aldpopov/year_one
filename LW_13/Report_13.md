@@ -44,13 +44,20 @@ int main()
     char alpha;
     int c;
     unsigned int letters_set = 0;
-    unsigned int used_cons = consonant_letters;
+    unsigned int used_cons = 0;
+    int first_use = 1;
     
     while((c = getchar())) {
         letters_set = letters_set | char_to_set(c);
         if(is_sep(c) == 1 && letters_set != 0) {
-            used_cons = used_cons & letters_set;
-            letters_set = 0;
+            if(first_use == 1) {
+                used_cons = letters_set & consonant_letters;
+                letters_set = 0;
+                first_use = 0;
+            } else {
+                used_cons = used_cons & letters_set;
+                letters_set = 0;
+            }
         }
         if(c == EOF) {
             break;
