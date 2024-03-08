@@ -1,0 +1,8 @@
+#!/bin/bash
+pref=${1:-NU}
+size=${2:-8M}
+count=${3:-3}
+for (( i=1; i <=$count; i++ ))
+do
+	truncate -s $size $pref$i
+done

@@ -1,0 +1,38 @@
+#!/bin/bash
+cap=${1:-7M}
+pref=${2:-"NU"}
+checker=${3:-"check"}
+dir_size=$(du -sm --apparent-size --exclude="*script" . | cut -f1)
+
+units="${cap: -1}"
+cap=${cap::-1}
+if [ $units = "K" ]; then
+	dir_size=$(du -s --apparent-size --exclude="*script" . | cut -f1)
+fi
+
+if [ "$checker" = "check" ]; then
+	read -p "Tochno? Yes(y) / No(n): " answer
+	if [ "$answer" = "y" ]; then
+		while [ $dir_size -gt $cap -a $(find . -type f -name "$pref*" | wc -l) -gt 0 ]
+		do
+			find . -type f -name "$pref*" | xargs du | sort -r | head -n 1 | cut -f2 | xargs rm
+			dir_size=$(du -sm --apparent-size --exclude="*script" . | cut -f1)
+			if [ $units = "K" ]; then
+				dir_size=$(du -s --apparent-size --exclude="*script" . | cut -f1)
+			fi
+		done
+		echo "Gotovo!" 
+	elif [ "$answer" = "n" ]; then
+		echo "Ladno."
+	else 
+		echo "Incorrect input ti dal!"
+	fi
+else
+	while [ $dir_size -gt $cap -a $(find . -type f -name "$pref*" | wc -l) -gt 0 ]; do
+		find . -type f -name "$pref*" | xargs du | sort -r | head -n 1 | cut -f2 | xargs rm
+		dir_size=$(du -sm --apparent-size --exclude="*script" . | cut -f1)
+		if [ $units = "K" ]; then
+			dir_size=$(du -s --apparent-size --exclude="*script" . | cut -f1)
+		fi
+	done
+fi 
