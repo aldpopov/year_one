@@ -6,8 +6,7 @@ compile:
 run:
 	./lab23
 	
-valgrind:
-	compile run_valgrind clean
+valgrind: compile run_valgrind clean
 	
 run_valgrind:
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./lab23
