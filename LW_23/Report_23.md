@@ -25,7 +25,6 @@
 #include <stdio.h> 
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h> 
  
 struct Node  
 { 
@@ -69,6 +68,18 @@ int isSymmetricHelper (struct Node *root) {
     } 
     return isSymmetric (root->left, root->right);  
 } 
+
+struct Node* freeTree(struct Node* root) {
+    if (root == NULL) {
+        return root;
+    }
+    
+    freeTree(root->left);
+    freeTree(root->right);
+    
+    free(root);
+    return 0;
+}
 
 int get_int(void) {
     int num;
@@ -114,6 +125,7 @@ int main () {
             break;
         }
     }
+    root = freeTree(root);
     return 0;  
 }
 
