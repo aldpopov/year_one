@@ -69,6 +69,44 @@ int isSymmetricHelper (struct Node *root) {
     return isSymmetric (root->left, root->right);  
 } 
 
+struct Node* deleteNode(struct Node* root, double value) {
+    if (root == NULL) {
+      return root;
+    } else {
+      if(value == root->data) {
+        if (root->left == NULL && root->right == NULL) 
+        {
+          free(root);
+          return NULL;
+        } else if(root->left == NULL) {
+          struct Node* t = root->right;
+          free(root);
+          return t;
+        } else if (root->right == NULL) {
+          struct Node* t = root->left;
+          free(root);
+          return t;
+        } else {
+          struct Node * m_r ; 
+          struct Node * act = root->right;
+          while (act->left != NULL) {
+            act = act->left;
+          }
+          m_r = act;
+          root->data = m_r->data;
+          root->right = deleteNode(root->right, m_r->data);
+        }
+      } else {
+        if (value < root->data) {
+          root->left = deleteNode(root->left, value);
+        } else if (value > root->data) {
+          root->right = deleteNode(root->right, value);
+        }
+      }
+      return root ;
+    }
+}
+
 struct Node* freeTree(struct Node* root) {
     if (root == NULL) {
         return root;
@@ -80,6 +118,27 @@ struct Node* freeTree(struct Node* root) {
     free(root);
     return 0;
 }
+
+void printTree(struct Node *root, int indent) { 
+    if (root == NULL) { 
+        return; 
+    } 
+ 
+    indent += 5; 
+ 
+    printTree(root->right, indent); 
+ 
+    printf("\n"); 
+    for (int i = 5; i < indent; i++) { 
+        printf(" "); 
+    } 
+ 
+    printf("%d\n", root->data); 
+ 
+    printTree(root->left, indent); 
+}
+
+
 
 int get_int(void) {
     int num;
@@ -115,6 +174,16 @@ int main () {
                 started = 1;
                 insert(root, value);
             }
+            continue;
+        }
+        if (strcmp(ans, "print") == 0) {
+            printTree(root, 5);
+            continue;
+        }
+        if (strcmp(ans, "delete") == 0) {
+            value = get_int();
+            root = deleteNode(root, value);
+            continue;
         }
         if ((strcmp(ans, "n") == 0) && (started == 1)) {
             if (isSymmetricHelper (root)) { 
@@ -127,6 +196,8 @@ int main () {
     }
     root = freeTree(root);
     return 0;  
+}
+  
 }
 
 ```
