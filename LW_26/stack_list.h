@@ -42,7 +42,6 @@ void stack_pop(Stack *s)
     StackNode *tmp = s->head->next;
     free(s->head);
     s->head = tmp;
-
 }
 
 bool stack_is_empty(Stack *s)
@@ -54,6 +53,8 @@ void stack_destroy(Stack *s)
 {
     while (!stack_is_empty(s))
         stack_pop(s);
+    if(stack_is_empty(s))
+    	free(s);
 }
 
 void stack_print(Stack *s)
@@ -64,47 +65,6 @@ void stack_print(Stack *s)
         printf("%d\n", marker->data);
         marker = marker->next;
     }
-    free(marker);
-}
-
-void stack_reverse(Stack *s)
-{
-    Stack *temp_stack = stack_create();
-
-    while (!stack_is_empty(s)) {
-        stack_push(temp_stack, s->head->data);
-        stack_pop(s);
-    }
-    *s = *temp_stack;
-    stack_destroy(temp_stack);
-}
-
-Stack merge_sort(Stack *s, Stack *s_2)
-{
-    Stack *res_stack = stack_create();
-
-    while(!stack_is_empty(s) && !stack_is_empty(s_2)) {
-        if(s->head->data >= s_2->head->data) {
-            stack_push(res_stack, s->head->data);
-            stack_pop(s);
-        } else if(s->head->data < s_2->head->data) {
-            stack_push(res_stack, s_2->head->data);
-            stack_pop(s_2);
-        }
-    }
-
-    while(!stack_is_empty(s) && stack_is_empty(s_2)) {
-        stack_push(res_stack, s->head->data);
-        stack_pop(s);
-    }
-    
-    while(stack_is_empty(s) && !stack_is_empty(s_2)) {
-        stack_push(res_stack, s_2->head->data);
-        stack_pop(s_2);
-    }
-
-    stack_reverse(res_stack);
-    return *res_stack;
 }
 
 #endif
