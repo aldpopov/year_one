@@ -67,4 +67,38 @@ void stack_print(Stack *s)
     }
 }
 
+void *stack_reverse(Stack *s, Stack *res_stack)
+{
+    
+    while (!stack_is_empty(s)) {
+    	stack_push(res_stack, s->head->data);
+    	stack_pop(s);
+    }
+    return 0;
+}
+
+void merge_sort(Stack *s, Stack *s_2, Stack *res_stack)
+{
+    
+    while (!stack_is_empty(s) && !stack_is_empty(s_2)) {
+    	if(s->head->data >= s_2->head->data) {
+    		stack_push(res_stack, s->head->data);
+    		stack_pop(s);
+    	} else if(s->head->data < s_2->head->data) {
+    		stack_push(res_stack, s_2->head->data);
+    		stack_pop(s_2);
+    	}
+    }
+    
+    while (!stack_is_empty(s) && stack_is_empty(s_2)) {
+    	stack_push(res_stack, s->head->data);
+    	stack_pop(s);
+    }
+    
+    while (stack_is_empty(s) && !stack_is_empty(s_2)) {
+    	stack_push(res_stack, s_2->head->data);
+    	stack_pop(s_2);
+    }
+    
+}
 #endif

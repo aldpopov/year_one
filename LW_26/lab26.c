@@ -24,7 +24,6 @@ int main()
     int value;
     Stack *s = stack_create();
     Stack *s_2 = stack_create();
-    Stack *t_stack = stack_create();
     
     char ans[100];
     printf("Type y between values to update your first stack. Type e to start working with second stack.\n");
@@ -59,36 +58,13 @@ int main()
         }
     }
     
-    while(!stack_is_empty(s) && !stack_is_empty(s_2)) {
-        if(s->head->data >= s_2->head->data) {
-            stack_push(t_stack, s->head->data);
-            stack_pop(s);
-        } else if(s->head->data < s_2->head->data) {
-            stack_push(t_stack, s_2->head->data);
-            stack_pop(s_2);
-        }
-    }
-
-    while(!stack_is_empty(s) && stack_is_empty(s_2)) {
-        stack_push(t_stack, s->head->data);
-        stack_pop(s);
-    }
-    
-    while(stack_is_empty(s) && !stack_is_empty(s_2)) {
-        stack_push(t_stack, s_2->head->data);
-        stack_pop(s_2);
-    }
-    
-    Stack *r_stack = stack_create();
-
-    while (!stack_is_empty(t_stack)) {
-        stack_push(r_stack, t_stack->head->data);
-        stack_pop(t_stack);
-    }
-    free(t_stack);
-    stack_print(r_stack);
-    stack_destroy(r_stack);
+    Stack *merge = stack_create();
+    merge_sort(s, s_2, merge);
+    Stack *reverse = stack_create();
+    stack_reverse(merge, reverse);
+    stack_print(reverse);
+    stack_destroy(merge);
+    stack_destroy(reverse);
     stack_destroy(s);
     stack_destroy(s_2);
-    return 0;
 }
