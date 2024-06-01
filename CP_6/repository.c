@@ -5,6 +5,11 @@ int str_write(char *s, FILE *f) {
         printf("ERROR");
         return 1;
     }
+    /*int len = strlen(s) + 1;
+    if(fwrite(s, sizeof(char), len, f) != len) {
+        printf("ERROR");
+        return 1;
+    }*/
     return 0;
 }
 
@@ -15,6 +20,7 @@ int int_write(int *i, FILE *f) {
     }
     return 0;
 }
+
 
 int str_read(char *s, FILE *f) {
     if(fread(s, sizeof(s[0]), MAXCHAR, f) != MAXCHAR) {
@@ -74,9 +80,9 @@ int get_student(Student *s, FILE *f) {
         s->tests[j] = k;
         j++;
         s->count = j;
-	free(k);
+	//free(k);
     }
-    free(t);
+    //free(t);
     if (i > 0) return 1;
     else return 0;
 }
@@ -94,6 +100,24 @@ int get_test(test *t, FILE *f) {
     else return 0;
 }
 
+void free_student(Student *s) {
+	/*free(s->surname);
+	free(s->initials);
+	free(s->sex);
+	free(s->group);*/
+	//if (s != NULL) {
+	if (s->tests != NULL) {
+	//printf("%d\n",s->count);
+		for (int i = 0; i < s->count; i++) {
+			if(s->tests[i] != NULL) free(s->tests[i]);
+		}
+		free(s->tests);
+		//free(s);
+	}
+	free(s);
+	//}
+}
+
 void add_test_to_student(test *t, Student *s) {
     if(s -> tests == NULL) {
         s->tests = (test**) malloc(sizeof(test*));
@@ -105,5 +129,4 @@ void add_test_to_student(test *t, Student *s) {
         s->tests[s->count] = t;
         s->count += 1;
     }
-   
 }

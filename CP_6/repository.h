@@ -26,6 +26,7 @@ int str_read(char * s, FILE *f);
 int int_read(int *i, FILE *f);
 int add_student(Student *s, FILE *f);
 int add_test(test*t, FILE *f);
+void free_student(Student *s);
 int get_student(Student *s, FILE *f);
 int get_test(test *t, FILE *f);
 void add_test_to_student(test *t, Student *s);

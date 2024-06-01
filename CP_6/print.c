@@ -22,7 +22,7 @@ int main() {
         for(int i = 0; i < s.count; i++) fprintf(stdout, "%s %d|", s.tests[i]->name, s.tests[i]->score);
         }
         fprintf(stdout, "\n");
-            fprintf(stdout, "+---------------+--------+---+----------+");
+        fprintf(stdout, "+---------------+--------+---+----------+");
         if(s.tests != NULL) {
         for(int i = 0; i < s.count; i++) {
             for(int j = 0; j < strlen(s.tests[i]->name); j++) fprintf(stdout, "-");
@@ -31,7 +31,7 @@ int main() {
             fprintf(stdout, "\n");
         }
     }
-    
+    fclose(f);
    
     
     return 0;

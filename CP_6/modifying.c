@@ -12,7 +12,7 @@ int main() {
         fscanf(stdin, "%s", s->surname);
         fprintf(stdout, "Enter student initials:\n");
         fscanf(stdin, "%s", s->initials);
-        fprintf(stdout, "Enter student sex: M (male) or W (female)\n");
+        fprintf(stdout, "Enter student sex: M (male) or F (female)\n");
         fscanf(stdin, "%s", s->sex);
         fprintf(stdout, "Enter student group:\n");
         fscanf(stdin, "%s", s->group);
@@ -22,7 +22,7 @@ int main() {
         s->count = count;
         s->tests = (test**)malloc(sizeof(test*) * count);
         for(int i = 0; i < count; i++) {
-            fprintf(stdout, "Test №%d\n", i + 1);
+            fprintf(stdout, "Test #%d\n", i + 1);
             test *t = malloc(sizeof(test));
             fprintf(stdout, "Enter test name:\n");
             fscanf(stdin, "%s", t->name);
